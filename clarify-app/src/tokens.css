@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'Aspekta';
+  src: url('/fonts/AspektaVF.woff2') format('woff2-variations'),
+       url('/fonts/Aspekta-400.woff2') format('woff2');
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aspekta';
+  src: url('/fonts/Aspekta-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aspekta';
+  src: url('/fonts/Aspekta-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aspekta';
+  src: url('/fonts/Aspekta-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aspekta';
+  src: url('/fonts/Aspekta-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Colors - MEASURED */
+  --color-brand-primary: #fbe57e;
+  --color-brand-black: #2a2928;
+  --color-brand-white: #ffffff;
+  --color-brand-dark-grey: #63615e;
+  --color-brand-medium-grey: #96938f;
+  --color-brand-light-grey: #efeeec;
+  --color-brand-lightest-grey: #f5f4f3;
+
+  /* Typography - MEASURED */
+  --font-family-primary: 'Aspekta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-secondary: 'Aspekta', sans-serif;
+
+  /* Type Scale - MEASURED / FLUID CLAMP */
+  /* The original CSS uses clamp with base sizes mapped to vw */
+  --font-size-body: clamp(1.125rem, 1.2vw, 1.2vw);
+  --font-size-h6: 1.125rem;
+  --font-size-h5: 1.5rem;
+  --font-size-h4: clamp(2rem, 2.667vw, 2.667vw);
+  --font-size-h3: clamp(2.5rem, 3.2vw, 3.2vw);
+  --font-size-h2: clamp(2.5rem, 3.2vw, 3.2vw);
+  --font-size-h1: clamp(3.5rem, 5.867vw, 5.867vw);
+
+  /* Spacing - MEASURED */
+  --spacing-gap-default: 1.5rem;
+  
+  /* Radii - MEASURED */
+  --radius-xs: 0.5rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+
+  /* INFERRED VALUES TODO */
+  /* TODO: --shadow-card is INFERRED from hover states */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+}

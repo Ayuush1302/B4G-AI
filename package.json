@@ -1,0 +1,9 @@
+{
+  "name": "b4g-ai-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix clarify-app",
+    "build": "npm run build --prefix clarify-app",
+    "preview": "npm run preview --prefix clarify-app"
+  }
+}
