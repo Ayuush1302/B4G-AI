@@ -18,7 +18,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="Contact" className="section contact-section pt-12 lg:pt-20 pb-0 px-[24px] w-full">
+    <section id="contact" className="section contact-section pt-12 lg:pt-20 pb-0 px-[24px] w-full"><div id="Contact" className="hidden" />
       <div className="max-w-[1440px] mx-auto w-full">
         <motion.div
           initial="hidden"

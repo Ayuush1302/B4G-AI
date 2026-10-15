@@ -8,32 +8,45 @@ interface ServiceItem {
   label: string;
   heading: string;
   description: string;
+  productSlug: string;
 }
 
 const servicesData: ServiceItem[] = [
   {
-    id: 'media-relations',
-    title: 'Media Relations',
-    image: 'https://cdn.prod.website-files.com/66f7e75deaee2c0e17b0887d/66fd8fb866d905ea29142eac_pexels-mikhail-nilov-6592668.webp',
-    label: 'Amplify Your Presence',
-    heading: 'Building strong media connections to elevate your brand’s visibility and credibility',
-    description: 'Our media relations service ensures your brand gets the attention it deserves. By fostering strong relationships with journalists and influencers, we secure impactful coverage that enhances your credibility and keeps your message in the spotlight.'
+    id: 'ai-agents',
+    title: 'AI Agents',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80',
+    label: 'Autonomous Enterprise Execution',
+    heading: 'Deploy autonomous agents that handle complex business tasks end-to-end without human intervention.',
+    description: 'Our autonomous AI agents reason, plan, and execute multi-step business workflows across your digital systems. From deep research, lead enrichment, and CRM updates to cross-system data synchronization and document analysis, our agents operate reliably 24/7 with human-in-the-loop governance.',
+    productSlug: 'ai-agents'
   },
   {
-    id: 'brand-strategy',
-    title: 'Brand Strategy',
-    image: 'https://cdn.prod.website-files.com/66f7e75deaee2c0e17b0887d/66fd8fb83e1b0a7a9c65e4a5_pexels-mikhail-nilov-6592670.webp',
-    label: 'Define Your Identity',
-    heading: 'Crafting brand strategies to establish a strong and lasting market presence',
-    description: 'A clear, cohesive brand strategy is essential for standing out in a crowded marketplace. Our brand strategy service helps you define your brand’s unique voice, values, and visual identity. From positioning to messaging, we create a framework that resonates.'
+    id: 'voice-bots',
+    title: 'Voice Bots',
+    image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80',
+    label: 'Sub-400ms Conversational Voice',
+    heading: 'Natural voice assistants for inbound and outbound calls that sound human and convert leads.',
+    description: 'Transform customer phone experiences with natural, conversational voice assistants that sound indistinguishable from humans. Powered by sub-400ms latency voice synthesis, intelligent interruption handling, and native PBX integrations that qualify prospects, book meetings, and resolve support tickets instantly.',
+    productSlug: 'voicebots'
   },
   {
-    id: 'digital-campaigns',
-    title: 'Digital Campaigns',
-    image: 'https://cdn.prod.website-files.com/66f7e75deaee2c0e17b0887d/66fd8fb7637b275caaf0cc83_pexels-mikhail-nilov-6592684.webp',
-    label: 'Engage and Influence',
-    heading: 'Crafting targeted digital strategies to drive engagement, loyalty, and results',
-    description: 'In today’s digital landscape, engaging your audience requires more than just a presence—it requires a strategy. Our digital campaigns blend creative content with targeted outreach to capture attention, build loyalty, and drive results. From social media to email marketing, we craft campaigns that inspire action.'
+    id: 'software-aggregator',
+    title: 'Software Aggregator',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+    label: 'Unified Command & Orchestration',
+    heading: 'A unified dashboard to manage, monitor, and orchestrate all your AI tools, workflows, and spend.',
+    description: 'Eliminate SaaS fragmentation and tool sprawl with a centralized intelligence hub. Monitor all active AI models, agent deployments, API call quotas, and enterprise data connectors from a single, SOC2-compliant command center with real-time telemetry and access control.',
+    productSlug: 'software-aggregator'
+  },
+  {
+    id: 'ai-chatbots',
+    title: 'AI Chatbots',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80',
+    label: '24/7 Omnichannel Intelligence',
+    heading: 'Intelligent conversational AI that handles customer inquiries, support tickets, and sales 24/7.',
+    description: 'Deliver instant, context-aware customer support and sales conversion across your website, mobile app, WhatsApp, and social channels. Fine-tuned on your proprietary knowledge base, product catalog, and policies, our chatbots resolve over 85% of tier-1 support requests with zero human wait time.',
+    productSlug: 'ai-chatbots'
   }
 ];
 
@@ -70,7 +83,7 @@ export const Services = () => {
 
           {/* Heading: Col 7 to 12 */}
           <h2 className="col-span-1 lg:col-start-7 lg:col-span-6 text-[#2a2928] text-3xl md:text-5xl lg:text-[clamp(2.5rem,3.2vw,3.2vw)] font-[550] leading-[100%] tracking-[-0.02em] max-w-[23ch] m-0">
-            From crafting compelling narratives to managing your reputation, our team delivers customized solutions.
+            From autonomous multi-agent pipelines to conversational voice systems, our team delivers enterprise AI solutions.
           </h2>
 
           {/* Services List: Col 3 to 12 (indented by 2 cols) */}
@@ -139,6 +152,24 @@ export const Services = () => {
                             <p className="service-paragraph text-[16px] sm:text-[17px] text-[#63615e] font-[450] leading-[1.5] max-w-[40ch] m-0">
                               {service.description}
                             </p>
+                            <div>
+                              <a
+                                href={`/product/${service.productSlug}`}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  e.preventDefault();
+                                  window.history.pushState({}, '', `/product/${service.productSlug}`);
+                                  window.dispatchEvent(new Event('navigationchange'));
+                                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
+                                className="inline-flex items-center gap-2 text-sm font-semibold text-[#2a2928] hover:text-black group/link pt-1"
+                              >
+                                <span className="underline decoration-[#ffe071] decoration-2 underline-offset-4">
+                                  Explore {service.title} Product
+                                </span>
+                                <span className="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </motion.div>

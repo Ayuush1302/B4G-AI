@@ -7,10 +7,11 @@ import { ProductDropdown, products } from './ProductDropdown';
 import { SolutionDropdown, solutions } from './SolutionDropdown';
 import { PartnerDropdown, partnerProgramsList } from './PartnerDropdown';
 
-const NavLink = ({ text, href }: { text: string; href: string }) => {
+const NavLink = ({ text, href, onClick }: { text: string; href: string; onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
   return (
     <a 
-      href={href} 
+      href={href}
+      onClick={onClick}
       className="relative overflow-hidden group flex flex-col h-[28px] text-[#707070] hover:text-[#2a2928] transition-colors duration-300 font-medium text-[19px] leading-[28px]"
     >
       <span className="transform transition-transform duration-300 group-hover:-translate-y-full leading-[28px]">{text}</span>
@@ -79,6 +80,26 @@ export const Navbar = () => {
     setIsPartnerOpen(false);
   };
 
+  const scrollToSection = (e: React.MouseEvent, targetId: string) => {
+    e.preventDefault();
+    if (window.location.pathname !== "/") {
+      window.history.pushState({}, "", `/#${targetId}`);
+      window.dispatchEvent(new Event("navigationchange"));
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 150);
+    } else {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState({}, "", `#${targetId}`);
+      }
+    }
+  };
+
   return (
     <nav id="Navbar" className="navbar relative w-full z-50 pt-[36px] sm:pt-[48px] px-[24px] pb-0 bg-transparent">
       {/* Container with max-w-[1440px] matching Hero and all sections */}
@@ -103,8 +124,8 @@ export const Navbar = () => {
           </div>
 
           {/* Center Flank: Desktop Links (dead center of the navbar) */}
-          <div className="hidden lg:flex items-center justify-center gap-6 xl:gap-8 flex-shrink-0">
-            <NavLink text="About" href="#about" />
+          <div className="hidden lg:flex items-center justify-center gap-8 xl:gap-10 flex-shrink-0">
+            <NavLink text="About" href="#about" onClick={(e) => scrollToSection(e, "about")} />
 
             {/* Product with Hover Mega-Menu Dropdown */}
             <div
@@ -244,17 +265,15 @@ export const Navbar = () => {
               </div>
             </div>
 
-            <NavLink text="Services" href="#services" />
-            <NavLink text="Testimonials" href="#testimonials" />
-            <NavLink text="Team" href="#team" />
-            <NavLink text="Pricing" href="#pricing" />
+            <NavLink text="Testimonials" href="#testimonials" onClick={(e) => scrollToSection(e, "testimonials")} />
+            <NavLink text="Team" href="#team" onClick={(e) => scrollToSection(e, "team")} />
           </div>
 
           {/* Right Flank: CTA Button & Mobile Menu Button */}
           <div className="flex-1 flex items-center justify-end">
             {/* Desktop CTA */}
             <div className="hidden lg:block">
-              <BrandButton text="Get in touch" href="#contact" bgClassName="bg-[#f4f4f4]" />
+              <BrandButton text="Get in touch" href="#contact" bgClassName="bg-[#f4f4f4]" onClick={(e) => scrollToSection(e as any, "contact")} />
             </div>
 
             {/* Mobile Menu Button - completely hidden on desktop */}
@@ -282,7 +301,10 @@ export const Navbar = () => {
             >
               <a
                 href="#about"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  scrollToSection(e, "about");
+                  setMobileMenuOpen(false);
+                }}
                 className="text-lg font-medium text-[#2a2928] py-2 border-b border-[#efeeec]"
               >
                 About
@@ -467,32 +489,24 @@ export const Navbar = () => {
               </div>
 
               <a
-                href="#services"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium text-[#2a2928] py-2 border-b border-[#efeeec]"
-              >
-                Services
-              </a>
-              <a
                 href="#testimonials"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  scrollToSection(e, "testimonials");
+                  setMobileMenuOpen(false);
+                }}
                 className="text-lg font-medium text-[#2a2928] py-2 border-b border-[#efeeec]"
               >
                 Testimonials
               </a>
               <a
                 href="#team"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  scrollToSection(e, "team");
+                  setMobileMenuOpen(false);
+                }}
                 className="text-lg font-medium text-[#2a2928] py-2 border-b border-[#efeeec]"
               >
                 Team
-              </a>
-              <a
-                href="#pricing"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium text-[#2a2928] py-2 border-b border-[#efeeec]"
-              >
-                Pricing
               </a>
 
               <div className="pt-2">
@@ -501,7 +515,10 @@ export const Navbar = () => {
                   href="#contact"
                   bgClassName="bg-[#f4f4f4]"
                   className="w-full justify-between"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    scrollToSection(e as any, "contact");
+                    setMobileMenuOpen(false);
+                  }}
                 />
               </div>
             </motion.div>

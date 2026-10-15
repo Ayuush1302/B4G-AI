@@ -66,7 +66,7 @@ export const Testimonials = () => {
   };
 
   return (
-    <section id="Testimonials" className="section slider-section py-20 lg:py-32 px-[24px] w-full bg-white overflow-hidden">
+    <section id="testimonials" className="section slider-section py-20 lg:py-32 px-[24px] w-full bg-white overflow-hidden"><div id="Testimonials" className="hidden" />
       <div className="max-w-[1440px] mx-auto w-full">
         {/* Header matching Image 2 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16 lg:mb-20">

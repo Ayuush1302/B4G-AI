@@ -294,17 +294,17 @@ function App() {
 
   return (
     <div className="min-h-screen bg-brand-white font-sans selection:bg-brand-primary selection:text-brand-black relative">
-      {/* Background Four Monoline Graphic: Under Navbar and Hero section, fully visible from right of the screen */}
-      <div className="absolute top-0 right-0 w-full h-[720px] lg:h-[840px] pointer-events-none overflow-hidden select-none z-0">
-        <div className="absolute top-8 md:top-12 lg:top-16 right-4 sm:right-8 md:right-12 lg:right-16 xl:right-24 w-[360px] sm:w-[440px] md:w-[520px] lg:w-[620px] xl:w-[680px] h-auto pointer-events-none">
-          <FourMonolineGraphic className="w-full h-auto" strokeColor="#EFEDEB" strokeWidth={1.5} />
-        </div>
-      </div>
-
       {/* Main Content Sheet with high z-index and solid background (slides up to reveal footer) */}
-      <div className="relative z-10 bg-brand-white min-h-screen">
+      <div className="relative z-10 bg-brand-white min-h-screen overflow-x-hidden">
+        {/* Background Four Monoline Graphic: Visible in Hero section behind text and navbar, matching other pages */}
+        <div className="absolute top-0 right-0 w-full h-[720px] lg:h-[840px] pointer-events-none overflow-hidden select-none z-0">
+          <div className="absolute top-8 md:top-12 lg:top-16 right-4 sm:right-8 md:right-12 lg:right-16 xl:right-24 w-[360px] sm:w-[440px] md:w-[520px] lg:w-[620px] xl:w-[680px] h-auto pointer-events-none opacity-80">
+            <FourMonolineGraphic className="w-full h-auto" strokeColor="#EFEDEB" strokeWidth={1.5} />
+          </div>
+        </div>
+
         <Navbar />
-        <main>
+        <main className="relative z-10">
           <Hero />
           <HeroVideo />
           <Services />

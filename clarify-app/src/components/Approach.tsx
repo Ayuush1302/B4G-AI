@@ -73,7 +73,7 @@ export const Approach = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="approach" className="section py-20 lg:py-32 px-[24px] w-full bg-white">
+    <section id="about" className="section py-20 lg:py-32 px-[24px] w-full bg-white"><div id="approach" className="hidden" />
       <div className="max-w-[1440px] mx-auto w-full">
         {/* Grid Header matching Webflow & Image 2 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
